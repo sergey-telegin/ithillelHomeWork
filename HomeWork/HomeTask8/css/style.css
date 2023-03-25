@@ -13,3 +13,17 @@
 p{
     font-style: italic;
 }
+
+.red-bold{
+    color: red;
+    font-weight: bold;
+}
+
+.img{
+    position: absolute; left: 10px; top: 125px;
+    width: 300px;
+}
+
+.data-position{
+    position: absolute; left: 10px; top: 300px;
+}

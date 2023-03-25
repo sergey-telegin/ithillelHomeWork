@@ -31,9 +31,26 @@ rename($pathOfPhotoOld, $pathOfPhotoNew);
 
 <body>
 <header>
-    <h1>Information update</h1>
-    <p>Fill in the fields below for the HR department</p>
+    <h1>Information is updated.</h1>
+    <p><span class="red-bold">Warning!</span>  If you see any mistakes, call HR department.</p>
 </header>
+
+<div>
+    <?php
+    echo "<img class=\"img\" src= $pathOfPhotoNew >";
+    ?>
+</div>
+<div class="data-position">
+    <h2>Your data</h2>
+    <table>
+        <?php
+            foreach ($worker as $data => $itemOfdata){
+                $printData = ucfirst($data);
+                echo "<tr><td>$printData:</td>"."<td>$itemOfdata</td></tr>";
+            }
+        ?>
+    </table>
+</div>
 
 </body>
 </html>
