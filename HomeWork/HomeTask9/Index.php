@@ -35,25 +35,21 @@ foreach ($vacancies as $vacancyKey => $vacancyItem) {
 <body>
 <table>
     <tr>
-        <?php
-        foreach ($vacancies[0] as $vacancyKey => $vacancyItem) {
-            if ($vacancyKey == 'sector_name') {
-                $vacancyKey = str_replace('_n', ' N', $vacancyKey);
-            }
-            $uckey = ucFirst($vacancyKey);
-            echo '<th>' . $uckey . '</th>';
-        }
-        ?>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Salary</th>
+        <th>Sector Title</th>
     </tr>
 
     <?php
-
-    foreach ($vacancies as $vacancyItem) {
-        echo '<tr>';
-        foreach ($vacancyItem as $vacancyPropertyItem) {
-            echo '<td>' . $vacancyPropertyItem . '</td>';
-        }
-        echo '</tr>';
+    foreach ($vacancies as $vacancyKey => $vacancyItem) {
+        echo
+            '<tr>'.
+            '<td>' . $vacancyItem['id'] . '</td>'.
+            '<td>' . $vacancyItem['title'] . '</td>'.
+            '<td>' . $vacancyItem['salary'] . '</td>'.
+            '<td>' . $vacancyItem['sector_name'] . '</td>'.
+         '</tr>';
     }
     ?>
 </table>
