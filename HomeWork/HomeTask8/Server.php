@@ -1,21 +1,24 @@
 
 <?php
+require_once('Mime.php');
+
 $worker = [];
 $nameOfWorker = $_POST['name'];
 $surnameOfWorker = $_POST['surname'];
 $pathOfPhotoOld = $_FILES['photo']['tmp_name'];
-$pathOfPhotoNew = "./HomeTask\Workers\\$nameOfWorker$surnameOfWorker\\$nameOfWorker$surnameOfWorker.jpg";
+$directoryOfPhoto = "./Workers\\$nameOfWorker$surnameOfWorker\\$nameOfWorker$surnameOfWorker";
+$fileExtension = mime2ext($_FILES['photo']['type']);
+$pathOfPhotoNew = "./Workers\\$nameOfWorker$surnameOfWorker\\$nameOfWorker$surnameOfWorker.$fileExtension";
 
 foreach ($_POST as $dataItem => $dataValue){
     $worker[$dataItem] = $dataValue;
 
 }
 
-if (!file_exists("./HomeTask\Workers\\$nameOfWorker.$surnameOfWorker")) {
-    @mkdir("./HomeTask\Workers\\$nameOfWorker$surnameOfWorker", 0777, true);
-}
-
-rename($pathOfPhotoOld, $pathOfPhotoNew);
+if(file_exists($directoryOfPhoto) || mkdir($directoryOfPhoto, 0777, true))
+{
+    rename($pathOfPhotoOld, $pathOfPhotoNew);
+};
 ?>
 
 <!doctype html>
