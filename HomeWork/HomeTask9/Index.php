@@ -13,11 +13,11 @@ $sectors = [
 
 $vacanciesWithSectors = [];
 
-foreach ($vacancies as $vacancy => $VacancyKeys) {
-    foreach ($sectors as $sector)
-        if ($VacancyKeys['sector_id'] === $sector['id']) {
-            $vacancies[$vacancy]['sector_name'] = $sector['title'];
-            unset($vacancies[$vacancy]['sector_id']);
+foreach ($vacancies as $vacancyKey => $vacancyItem) {
+    foreach ($sectors as $sectorItem)
+        if ($vacancyItem['sector_id'] === $sectorItem['id']) {
+            $vacancies[$vacancyKey]['sector_name'] = $sectorItem['title'];
+            unset($vacancies[$vacancyKey]['sector_id']);
         }
 }
 ?>
@@ -36,11 +36,11 @@ foreach ($vacancies as $vacancy => $VacancyKeys) {
 <table>
     <tr>
         <?php
-        foreach ($vacancies[0] as $key => $vacancy) {
-            if ($key == 'sector_name') {
-                $key = str_replace('_n', ' N', $key);
+        foreach ($vacancies[0] as $vacancyKey => $vacancyItem) {
+            if ($vacancyKey == 'sector_name') {
+                $vacancyKey = str_replace('_n', ' N', $vacancyKey);
             }
-            $uckey = ucFirst($key);
+            $uckey = ucFirst($vacancyKey);
             echo '<th>' . $uckey . '</th>';
         }
         ?>
@@ -48,10 +48,10 @@ foreach ($vacancies as $vacancy => $VacancyKeys) {
 
     <?php
 
-    foreach ($vacancies as $key => $vacancy) {
+    foreach ($vacancies as $vacancyKey => $vacancyItem) {
         echo '<tr>';
-        foreach ($vacancy as $key => $item) {
-            echo '<td>' . $item . '</td>';
+        foreach ($vacancyItem as $vacancyPropertyKey => $vacancyPropertyItem) {
+            echo '<td>' . $vacancyPropertyItem . '</td>';
         }
         echo '</tr>';
     }

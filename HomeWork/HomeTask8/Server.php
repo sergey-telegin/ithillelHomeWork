@@ -1,22 +1,26 @@
-
 <?php
+
 require_once('Mime.php');
 
 $worker = [];
-$nameOfWorker = $_POST['name'];
-$surnameOfWorker = $_POST['surname'];
+$fileName = $_POST['name'] . $_POST['surname'];
 $pathOfPhotoOld = $_FILES['photo']['tmp_name'];
-$directoryOfPhoto = "./Workers\\$nameOfWorker$surnameOfWorker\\$nameOfWorker$surnameOfWorker";
+$directoryOfPhoto = "." . DIRECTORY_SEPARATOR . "Workers" . DIRECTORY_SEPARATOR . "$fileName" . DIRECTORY_SEPARATOR;
 $fileExtension = mime2ext($_FILES['photo']['type']);
-$pathOfPhotoNew = "./Workers\\$nameOfWorker$surnameOfWorker\\$nameOfWorker$surnameOfWorker.$fileExtension";
+$pathOfPhotoNew = $directoryOfPhoto . $fileName . $fileExtension;
 
-foreach ($_POST as $dataItem => $dataValue){
-    $worker[$dataItem] = $dataValue;
+if (!$fileExtension) {
 
+    echo "<H1>Неверный тип файла</H1>";
+
+    return;
 }
 
-if(file_exists($directoryOfPhoto) || mkdir($directoryOfPhoto, 0777, true))
-{
+foreach ($_POST as $dataItem => $dataValue) {
+    $worker[$dataItem] = $dataValue;
+}
+
+if (file_exists($directoryOfPhoto) || mkdir($directoryOfPhoto, 0777, true)) {
     rename($pathOfPhotoOld, $pathOfPhotoNew);
 };
 ?>
@@ -35,7 +39,7 @@ if(file_exists($directoryOfPhoto) || mkdir($directoryOfPhoto, 0777, true))
 <body>
 <header>
     <h1>Information is updated.</h1>
-    <p><span class="red-bold">Warning!</span>  If you see any mistakes, call HR department.</p>
+    <p><span class="red-bold">Warning!</span> If you see any mistakes, call HR department.</p>
 </header>
 
 <div>
@@ -47,10 +51,10 @@ if(file_exists($directoryOfPhoto) || mkdir($directoryOfPhoto, 0777, true))
     <h2>Your data</h2>
     <table>
         <?php
-            foreach ($worker as $data => $itemOfdata){
-                $printData = ucfirst($data);
-                echo "<tr><td>$printData:</td>"."<td>$itemOfdata</td></tr>";
-            }
+        foreach ($worker as $data => $itemOfdata) {
+            $printData = ucfirst($data);
+            echo "<tr><td>$printData:</td>" . "<td>$itemOfdata</td></tr>";
+        }
         ?>
     </table>
 </div>
