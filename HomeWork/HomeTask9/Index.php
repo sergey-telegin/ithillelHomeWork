@@ -48,9 +48,9 @@ foreach ($vacancies as $vacancyKey => $vacancyItem) {
 
     <?php
 
-    foreach ($vacancies as $vacancyKey => $vacancyItem) {
+    foreach ($vacancies as $vacancyItem) {
         echo '<tr>';
-        foreach ($vacancyItem as $vacancyPropertyKey => $vacancyPropertyItem) {
+        foreach ($vacancyItem as $vacancyPropertyItem) {
             echo '<td>' . $vacancyPropertyItem . '</td>';
         }
         echo '</tr>';
