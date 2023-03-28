@@ -2,7 +2,7 @@
 
 $name = 'SERGEY';
 $surname = 'TELEGIN';
-$age = 30;
+$age = 20;
 
 echo "\"Привіт! Я $name $surname мені $age років \"";
 
