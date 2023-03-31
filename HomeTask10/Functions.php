@@ -20,9 +20,8 @@ function moveDatafromPostTo(): array
 }
 
 function checkUploadPhoto ($filesource){
-    $file = $filesource;
-    if (!empty($file['error']) || empty($file['tmp_name'])) {
-        switch ($file['error']) {
+    if (!empty($filesource['error']) || empty($filesource['tmp_name'])) {
+        switch ($filesource['error']) {
             case 1:
             case 2: $error = 'Превышен размер загружаемого файла.'; break;
             case 3: $error = 'Файл был получен только частично.'; break;

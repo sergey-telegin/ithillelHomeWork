@@ -8,10 +8,7 @@ $worker = moveDatafromPostTo();
 $fileSource = $_FILES['photo'];
 $num = 0;
 $pathOfPhotoNew1 = workWithFiles($fileSource, $num);
-
-
 $fileSourceMulti = $_FILES['multiphoto'];
-
 $fileSourceMulti = arrayToOtherArray($fileSourceMulti);
 
 foreach ($fileSourceMulti as $fileSource) {

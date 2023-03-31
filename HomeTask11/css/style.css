@@ -1,0 +1,12 @@
+.title {
+    color: red;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 18pt;
+}
+li {
+    color: blue;
+    font-weight: normal;
+    font-style: italic;
+    font-size: 14pt;
+}
