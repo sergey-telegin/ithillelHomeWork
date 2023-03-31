@@ -4,7 +4,7 @@ function fileExtension($fileSource)
     $fileExtension = mime2ext($fileSource['type']);
     if (!$fileExtension) {
 
-       exit("<H1>Неверный тип файла</H1>");
+        return ("<H1>Неверный тип файла</H1>");
 
     }
     return $fileExtension;
