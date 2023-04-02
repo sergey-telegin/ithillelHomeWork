@@ -7,7 +7,7 @@ enum ListType
 
 $animals = ["кошка", "собака", "слон", "жираф", "тигр"];
 
-function htmllist($array, ListType $order = ListType::ul){
+function htmllist(array $array, ListType $order = ListType::ul){
 
     $list = '';
     $strings = '';
