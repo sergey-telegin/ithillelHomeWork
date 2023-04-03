@@ -12,7 +12,7 @@ $words = [
     "1234"
 ];
 
-function wordFilter($words, $length){
+function wordFilter(&$words, $length){
     $result=[];
     foreach ($words as $word){
         if (strlen($word)<$length){

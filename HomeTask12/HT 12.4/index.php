@@ -3,10 +3,7 @@
 //здесь передаю множитель по ссылке как и указано в задаче
 $nums = [1, 2, 4];
 $multi = 5;
-$product = function ($num, &$multi) {
-    return $num * $multi;
-
-};
+$product = fn ($num, &$multi) => $num * $multi;
 
 function productArray($array, $function, &$multi)
 {
@@ -24,10 +21,7 @@ echo PHP_EOL;
 //здесь передаю по ссылке массив, тогда будет изменён оригинальный массив
 $numsRef2 = [1, 2, 4];
 $multi2 = 3;
-$product2 = function ($num, $multi) {
-    return $num * $multi;
-
-};
+$product2 = fn ($num, &$multi) => $num * $multi;
 
 function productArray2(&$array2, $function2, $multi2)
 {
