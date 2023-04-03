@@ -1,6 +1,6 @@
 <?php
 
-$array = [3, 5, 3, 4];
+$array = [3, 4, 5, 3, 4];
 
 $evenNum = function (int $num): bool {
     $result = $num % 2 === 0;
