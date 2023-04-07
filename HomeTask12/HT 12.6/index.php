@@ -24,3 +24,4 @@ function wordFilter(&$words, $length){
 
 $filtredWords = wordFilter($words, 5);
 var_dump($filtredWords);
+echo 1;
