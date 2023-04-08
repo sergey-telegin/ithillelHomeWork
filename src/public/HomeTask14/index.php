@@ -1,13 +1,3 @@
-<?php
-require_once (__DIR__.'\controllers\functions.php');
-session_start();
-printMethodAlert();
-printNameAlert();
-printPasswordValidationAlert();
-printIsMatchPassAlert();
-
-?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -15,7 +5,7 @@ printIsMatchPassAlert();
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="./css/bootstrap.rtl.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1zt
+    <link href="css/bootstrap.rtl.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1zt
     cQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Document</title>
 </head>
@@ -53,6 +43,6 @@ printIsMatchPassAlert();
             </form>
 
 
-<script src="./js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
