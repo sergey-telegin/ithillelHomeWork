@@ -44,7 +44,7 @@ if (file_exists($directoryOfPhoto) || mkdir($directoryOfPhoto, 0777, true)) {
 
 <div>
     <?php
-    echo "<img class=\"img\" src= $pathOfPhotoNew >";
+    echo "<img class=\"img\" public= $pathOfPhotoNew >";
     ?>
 </div>
 <div class="data-position">

@@ -38,7 +38,7 @@ foreach ($fileSourceMulti as $fileSource) {
 
 <div>
     <?php
-    echo "<img class=\"img\" src= $pathOfPhotoNew1 >";
+    echo "<img class=\"img\" public= $pathOfPhotoNew1 >";
     ?>
 </div>
 <div class="data-position">

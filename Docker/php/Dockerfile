@@ -12,3 +12,6 @@ RUN /bin/sh -c "docker-php-ext-install pdo_mysql  \
     && docker-php-ext-enable opcache  \
     && apk add --no-cache icu-dev  \
     && docker-php-ext-install intl"
+
+RUN curl -sS https://getcomposer.org/installer | php -- \
+--install-dir=/usr/bin --filename=composer && chmod +x /usr/bin/composer
