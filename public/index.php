@@ -1,11 +1,10 @@
 <?php
-
+const BASE_URL_PREF = 'src/Tasks';
 $ds = DIRECTORY_SEPARATOR;
 $dir = __DIR__;
-
 require_once $dir . $ds . '..' . $ds . 'src' . $ds . 'base' . $ds . 'reader.php';
 
-$path = "$dir{$ds}..{$ds}";
+$path = $dir.$ds.'..'.$ds.BASE_URL_PREF.$ds;
 
 $urlList = read($path);
 

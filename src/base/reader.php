@@ -1,7 +1,4 @@
 <?php
-$ds = DIRECTORY_SEPARATOR;
-$dir = __DIR__;
-$path = "$dir{$ds}..{$ds}src";
 
 function validate($fileName)
 {
@@ -28,9 +25,9 @@ function getUrl($fileName, $path, $urlPref = null)
     if (isHomeTaskValidName($path . DIRECTORY_SEPARATOR . $fileName)) {
 
         if ($urlPref) {
-            $url = "src/$urlPref/$fileName/index.php";
+            $url = BASE_URL_PREF."/$urlPref/$fileName/index.php";
         } else {
-            $url = "src/$fileName/index.php";
+            $url = BASE_URL_PREF."/$fileName/index.php";
         }
 
         return ['name' => $fileName, 'url' => $url];
@@ -38,7 +35,7 @@ function getUrl($fileName, $path, $urlPref = null)
 
     if (str_ends_with($fileName, 'php')) {
         $name = substr($fileName, 0, -4);
-        return ['name' => $name, 'url' => "src/$fileName"];
+        return ['name' => $name, 'url' => BASE_URL_PREF."/$fileName"];
     }
     return ['name' => $fileName, 'items' => read($path . $fileName, $fileName)];
 }
