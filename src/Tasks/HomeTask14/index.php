@@ -21,7 +21,7 @@ require_once(__DIR__ . '/functions/functions.php');
 <body>
 
 <div class="container" >
-    <div class="row" >
+    <div class="row mt-lg-5" >
         <div class="col-md-8 offset-md-2" >
             <?php echo printMessages('warnings','method'); ?>
             <h3 class="text-center" >Registration form</h3>
