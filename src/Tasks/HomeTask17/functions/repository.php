@@ -26,7 +26,9 @@ function saveUser($registerUserData): ?string
 
 
     try {
-        $request = $connectionToDB->prepare('INSERT INTO users (name, email, password, created_at) VALUES (:name, :email, :password, NOW());');
+        $request = $connectionToDB->prepare(
+            'INSERT INTO users (name, email, password, created_at, role_id) VALUES (:name, :email, :password, NOW(), 1);'
+        );
         $request->execute(
             ['name' => $name, 'email' => $email, 'password' => $password]
         );

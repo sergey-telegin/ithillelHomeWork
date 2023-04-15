@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `categories_posts_mapping`(
     `post_id` INT NOT NULL,
 CONSTRAINT `fk_categories_posts_mapping_category_id`
     FOREIGN KEY (category_id)
-    REFERENCES categories (id)
+    REFERENCES `categories` (id)
     ON DELETE CASCADE,
 CONSTRAINT `fk_categories_posts_mapping_post_id`
     FOREIGN KEY (post_id)
@@ -56,8 +56,9 @@ CONSTRAINT `fk_categories_posts_mapping_post_id`
 );
 
 -- 5. Добавление столбца в существующую таблицу
-ALTER TABLE `table_name`
-ADD COLUMN `deleted` TINYINT(1) NOT NULL DEFAULT 0;
+ALTER TABLE `posts` ADD COLUMN `deleted` TINYINT(1) NOT NULL DEFAULT 0;
+ALTER TABLE `users` ADD COLUMN `deleted` TINYINT(1) NOT NULL DEFAULT 0;
+ALTER TABLE `categories` ADD COLUMN `deleted` TINYINT(1) NOT NULL DEFAULT 0;
 
--- 6. Добавление индекса для запроса
+-- 6. Добавление индекса для запроса.
 CREATE INDEX index_posts_deleted_id ON `posts` (deleted, id);
