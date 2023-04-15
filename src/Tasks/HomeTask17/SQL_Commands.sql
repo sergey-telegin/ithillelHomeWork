@@ -41,17 +41,18 @@ CREATE TABLE IF NOT EXISTS `categories` (
 
 -- 4. Создание ассоциативной таблицы для отношения таблиц `posts` и `categories`
 
-CREATE TABLE IF NOT EXISTS `users_roles_mapping`(
+CREATE TABLE IF NOT EXISTS `categories_posts_mapping`(
     `category_id` INT NOT NULL,
     `post_id` INT NOT NULL,
-CONSTRAINT `fk_users_roles_mapping_category_id`
+CONSTRAINT `fk_categories_posts_mapping_category_id`
     FOREIGN KEY (category_id)
     REFERENCES categories (id)
     ON DELETE CASCADE,
-CONSTRAINT `fk_users_roles_mapping_post_id`
+CONSTRAINT `fk_categories_posts_mapping_post_id`
     FOREIGN KEY (post_id)
     REFERENCES `posts` (id)
     ON DELETE CASCADE
+    );
 );
 
 -- 5. Добавление столбца в существующую таблицу
