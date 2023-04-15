@@ -45,8 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="col-md-8 offset-md-2">
                         <div class="form-group">
                             <input type="password" class="form-control" name="password"
-                                   placeholder="Enter your password"
-                                   value="123@123.comA"/>
+                                   placeholder="Enter your password"/>
                         </div>
 
                         <div class="text-center col-xs-12">

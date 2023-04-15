@@ -1,3 +1,16 @@
+-- 0. Создание таблицы пользователей
+CREATE TABLE IF NOT EXISTS users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    role_id INT NOT NULL,
+CONSTRAINT fk_users_role_id
+    FOREIGN KEY (role_id)
+    REFERENCES users_roles (id)
+    );
+
 -- 1. создание таблицы `posts`
 
 CREATE TABLE IF NOT EXISTS `posts` (
@@ -14,15 +27,10 @@ CONSTRAINT fk_posts_user_id
 
 -- 2. Создание таблицы `users_roles`
 
-CREATE TABLE IF NOT EXISTS `users_roles` (
-    `id` INT PRIMARY KEY AUTO_INCREMENT,
-    `roles` VARCHAR(255) NOT NULL,
-    `user_id` INT NOT NULL,
-    CONSTRAINT fk_user_roles_user_id
-     FOREIGN KEY (user_id)
-         REFERENCES users (id)
-         ON DELETE CASCADE
-);
+CREATE TABLE IF NOT EXISTS users_roles (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    roles VARCHAR(255) NOT NULL
+    );
 
 -- 3. Создание таблицы `categories`
 
@@ -47,8 +55,8 @@ CONSTRAINT `fk_users_roles_mapping_post_id`
 );
 
 -- 5. Добавление столбца в существующую таблицу
-
 ALTER TABLE `table_name`
 ADD COLUMN `deleted` TINYINT(1) NOT NULL DEFAULT 0;
+
 -- 6. Добавление индекса для запроса
 CREATE INDEX index_posts_deleted_id ON `posts` (deleted, id);
