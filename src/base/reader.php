@@ -25,9 +25,9 @@ function getUrl($fileName, $path, $urlPref = null)
     if (isHomeTaskValidName($path . DIRECTORY_SEPARATOR . $fileName)) {
 
         if ($urlPref) {
-            $url = BASE_URL_PREF."/$urlPref/$fileName/index.php";
+            $url = BASE_URL_PREF."/$urlPref/$fileName/registration.php";
         } else {
-            $url = BASE_URL_PREF."/$fileName/index.php";
+            $url = BASE_URL_PREF."/$fileName/registration.php";
         }
 
         return ['name' => $fileName, 'url' => $url];
@@ -42,5 +42,5 @@ function getUrl($fileName, $path, $urlPref = null)
 
 function isHomeTaskValidName($filePath)
 {
-    return is_dir($filePath) && file_exists($filePath . DIRECTORY_SEPARATOR . "index.php");
+    return is_dir($filePath) && file_exists($filePath . DIRECTORY_SEPARATOR . "registration.php");
 }

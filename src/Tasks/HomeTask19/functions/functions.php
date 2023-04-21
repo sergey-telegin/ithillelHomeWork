@@ -39,26 +39,22 @@ function getNewUserData()
     $registerUserData = [];
     $registerUserData['name'] = $_POST['name'];
     $registerUserData['email'] = $_POST['email'];
-    $registerUserData['password'] = hashPass($_POST['password']);
+    $registerUserData['password'] = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
     return $registerUserData;
 }
 
-function getUserLoginHPass()
+function getUserLoginPass()
 {
+    $userData =[];
     $name = $_POST['email'] ?? null;
     $password = $_POST['password'] ?? null;
 
     if ($name && $password) {
         $userData = [
             'email' => $name,
-            'password' => hashPass($password)
+            'password' => $password
         ];
     }
     return $userData;
-}
-
-function hashPass($pass)
-{
-    return hash('SHA256', $pass);
 }

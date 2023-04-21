@@ -2,11 +2,12 @@
 session_start();
 require_once(__DIR__ . '/../functions/functions.php');
 
+$errors = [];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 //    loadSession(1);
 
-    $userData = getUserLoginHPass();
+    $userData = getUserLoginPass();
     $userId = login($userData);
 
     if (!$userId) {

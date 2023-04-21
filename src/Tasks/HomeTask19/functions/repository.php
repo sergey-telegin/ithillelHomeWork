@@ -1,4 +1,5 @@
 <?php
+require_once(__DIR__ . '/functions.php');
 function connectToDb(): PDO
 {
     $host = "db";
@@ -38,31 +39,29 @@ function saveUser($registerUserData): ?string
     }
 }
 
-function login($userData): int|false {
+function login($userData): int|false
+{
 
     $data = array_filter($userData);
 
-    if(count($data) < 2) {
-        return false;
-    }
-
     $connectionToDB = connectToDb();
 
-    $request = $connectionToDB->prepare('SELECT * FROM `users` WHERE email = :email AND password = :password');
+    $query = $connectionToDB->prepare('SELECT password, id FROM `users` WHERE email = :email');
 
     try {
-        $request->execute(['email' => $userData['email'], 'password' => $userData['password']]);
+        $query->execute(['email' => $userData['email']]);
     } catch (PDOException $e) {
         return false;
     }
 
-    $result = $request->fetchAll(PDO::FETCH_ASSOC);
+    $result = $query->fetch(PDO::FETCH_ASSOC);
 
-    if(count($result) > 0) {
-        $data = reset($result);
-        return $data['id'];
+    if(count($result) > 1 && password_verify($userData['password'], $result['password'])) {
+        return $result['id'];
     }
+
     return false;
+
 }
 
 function loadUserById($userId): array|false

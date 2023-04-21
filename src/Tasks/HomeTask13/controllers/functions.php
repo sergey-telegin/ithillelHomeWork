@@ -82,7 +82,7 @@ function printIsMatchPassAlert()
 function checkSession (){
     $tempArray = array_filter($_SESSION);
     if (!empty($tempArray)){
-        header('Location: /HomeTask13/index.php');
+        header('Location: /HomeTask13/registration.php');
     }
 
 }
@@ -92,4 +92,4 @@ function checkSession (){
 //function setMethodAlert($method){
 //if ($_SERVER['REQUEST_METHOD']!=='POST'){
 //    $_SESSION['alert'] = 'Method is not allowed' ;
-//    header('Location: /HomeTask13/index.php');
+//    header('Location: /HomeTask13/registration.php');
