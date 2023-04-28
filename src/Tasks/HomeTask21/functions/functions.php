@@ -13,6 +13,11 @@ function getMessages(string $type): array
 
 }
 
+function setFormData(string $field):?string{
+    return $_SESSION['registerFormInfo'][$field] ?? NULL;
+}
+
+
 function setRegisterInform()
 {
     $_SESSION['registerFormInfo']['name'] = $_POST['name'];

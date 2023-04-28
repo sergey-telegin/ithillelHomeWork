@@ -27,13 +27,13 @@ require_once(__DIR__ . '/functions/functions.php');
             <form class="form" method="post" action="controllers/registration.php">
                 <div class="col-xs-12">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="name" placeholder="Enter your name" value="<?php echo $_SESSION['registerFormInfo']['name'] ?? NULL ?>"/>
+                        <input type="text" class="form-control" name="name" placeholder="Enter your name" value="<?php echo setFormData('name')?>"/>
                         <?php echo printMessages('alerts', 'name'); ?>
                     </div>
                 </div>
                 <div class="col-xs-12">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="email" placeholder="E-mail"  value="<?php echo $_SESSION['registerFormInfo']['email']?? NULL ?>"/>
+                        <input type="text" class="form-control" name="email" placeholder="E-mail"  value="<?php echo setFormData('email') ?>"/>
                         <?php echo printMessages('alerts', 'email'); ?>
                     </div>
                 </div>
