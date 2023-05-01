@@ -81,9 +81,9 @@ function loadUserById($userId): array|false
 
 function loadSession(): int|false
 {
-    $sessionId = $_COOKIE['Auth'] ?? null;
+    $sessionId = $_COOKIE['token'] ?? null;
     $connectionToDB = connectToDb();
-    $request = $connectionToDB->prepare('SELECT user_id FROM `user_session` WHERE uuid=:session_id;');
+    $request = $connectionToDB->prepare('SELECT user_id FROM `user_session` WHERE token=:session_id;');
 
     try {
         $request->execute(['session_id' => $sessionId]);
@@ -97,15 +97,15 @@ function loadSession(): int|false
 
 function saveUserSession($userID): bool
 {
-    $idSession = uniqid(more_entropy: true);
+    $token = uniqid(more_entropy: true);
 
-    setcookie('Auth', $idSession, 0, '/');
+    setcookie('Auth', $token, 0, '/');
 
     $connectionToDB = connectToDb();
-    $request = $connectionToDB->prepare('INSERT INTO `user_session` VALUES (:user_id, :session_id)');
+    $request = $connectionToDB->prepare('INSERT INTO `user_session` VALUES (:user_id, :token)');
 
     try {
-        $request->execute(['user_id' => $userID, 'session_id' => $idSession]);
+        $request->execute(['user_id' => $userID, 'session_id' => $token]);
     } catch (PDOException $e){
         return false;
     }

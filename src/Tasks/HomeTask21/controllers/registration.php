@@ -22,6 +22,7 @@ $errors = validate($_POST, [
 
 if ($errors) {
     setMessages($errors);
+    setRegisterInform();
     header('Location: http://localhost:8000/src/Tasks/HomeTask21/registration.php');
     exit;
 }
@@ -35,9 +36,9 @@ $userId = login($userData);
 
 if (!$userId) {
     echo "error";
+    setRegisterInform();
     header('Location: http://localhost:8000/src/Tasks/HomeTask21/controllers/login.php');
     return;
 }
-setRegisterInform();
 saveUserSession($userId);
 header('Location: http://localhost:8000/src/Tasks/HomeTask21/cabinet.php');
