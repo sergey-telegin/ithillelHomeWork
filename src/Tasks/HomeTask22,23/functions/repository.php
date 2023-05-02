@@ -98,17 +98,19 @@ function saveUserSession($userId, $userLogInfo): bool
 {
     $token = uniqid(more_entropy: true);
 
-    setcookie('token', $token, 0, '/');
-
     $connectionToDB = connectToDb();
     $query = $connectionToDB->prepare('INSERT INTO `user_session` VALUES (:user_id, :token, :user_agent, :ip, NOW())');
 
     try {
-        $query->execute(['user_id' => $userId, 'token' => $token, 'user_agent' => $userLogInfo['user_agent'], 'ip' => $userLogInfo['ip']]);
+        $query->execute(
+            ['user_id' => $userId, 'token' => $token, 'user_agent' => $userLogInfo['user_agent'], 'ip' => $userLogInfo['ip']]
+
+        );
+        return true;
     } catch (PDOException $e) {
         return false;
     }
-    return true;
+
 }
 
 function deleteSessionFromDb($token): bool
