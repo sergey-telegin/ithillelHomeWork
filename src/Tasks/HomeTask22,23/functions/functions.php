@@ -84,7 +84,7 @@ function deleteTokenFromCookie():void{
 
 }
 
-function getFiltredPostItem(string $key, $type = 'default'): string
+function getFiltredPostItem(string $key): string
 {
     $value = filter_var($key);
     $value = htmlspecialchars($value);
@@ -103,7 +103,7 @@ function getFiltredPostData(): array{
 function reFilterItem(string $item): string{
     return htmlspecialchars_decode($item);
 }
-function reFilterArray(array $array){
+function reFilterArray(array $array): array{
     $reFitredArray = [];
     foreach ($array as $key => $item){
         $reFitredArray[$key] = reFilterItem($item);
