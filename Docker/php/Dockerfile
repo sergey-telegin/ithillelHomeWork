@@ -1,5 +1,6 @@
 FROM php:8.2-fpm-alpine
 
+
 RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS  \
     && apk add --update linux-headers  \
     && pecl install xdebug  \
@@ -15,3 +16,5 @@ RUN /bin/sh -c "docker-php-ext-install pdo_mysql  \
 
 RUN curl -sS https://getcomposer.org/installer | php -- \
 --install-dir=/usr/bin --filename=composer && chmod +x /usr/bin/composer
+
+USER www-data

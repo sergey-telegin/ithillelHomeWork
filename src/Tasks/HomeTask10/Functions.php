@@ -41,8 +41,8 @@ function checkUploadPhoto ($filesource){
 
 }
 
-function renameMoveFile($from, $to, $ceckDirectory){
-    if (file_exists($ceckDirectory) || mkdir($ceckDirectory, 0777, true)) {
+function renameMoveFile($from, $to, $checkDirectory){
+    if (file_exists($checkDirectory) || mkdir($checkDirectory, 0777, true)) {
         rename($from, $to);
     }
 }
@@ -73,3 +73,4 @@ function arrayToOtherArray($filesArray){
     }
     return $newArray;
 }
+
