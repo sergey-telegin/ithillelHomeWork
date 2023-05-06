@@ -20,6 +20,8 @@ require_once(__DIR__ . '/functions/functions.php');
 </head>
 <body>
 
+<?php require_once 'templates/_header.php'?>
+
 <form class="form" method="post" action="controllers/login.php">
     <?php echo printMessages('warnings', 'method'); ?>
     <?php echo printMessages('alerts', 'credentials'); ?>

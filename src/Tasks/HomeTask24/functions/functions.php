@@ -124,7 +124,7 @@ function loadPhoto(): ?string
 
     $fileName = $_POST['author_id'] . "_" . date('m_d_Y_H:i:s');
     $defaultFilePath = $_FILES['image']['tmp_name'];
-    $newImageDirectory = dirname(__DIR__) . DIRECTORY_SEPARATOR . "Images" . DIRECTORY_SEPARATOR . date("m_d_Y") . DIRECTORY_SEPARATOR;
+    $newImageDirectory = dirname(__DIR__) . DIRECTORY_SEPARATOR . "Images" . DIRECTORY_SEPARATOR . date("m_d_Y"). DIRECTORY_SEPARATOR;
     $fileExtension = mime2ext($_FILES['image']['type']);
     $imageNewPath = $newImageDirectory . $fileName . '.' .$fileExtension;
 
@@ -143,3 +143,11 @@ function loadPhoto(): ?string
     }
 }
 
+function logger($message, $filename = 'log.txt'): void{
+    $currentDate = date('d.m.Y H:i:s');
+    $userId = loadSession();
+    $message = "[$currentDate][user #$userId][$message]".PHP_EOL;
+    $file = fopen($filename, 'a');
+    fwrite($file, $message);
+    fclose($file);
+}

@@ -26,6 +26,8 @@ $userId = loadSession();
 </head>
 <body>
 
+<?php require_once 'templates/_header.php'?>
+
 <div class="container">
     <div class="row mt-lg-5">
         <div class="col-md-8 offset-md-2">

@@ -23,6 +23,7 @@ if(!$errors){
 
 if($_FILES['image']){
     $filePath = loadPhoto();
+
 }
 
 
@@ -33,12 +34,15 @@ foreach ($_POST as $key => $value){
 
 $post['image'] = $filePath;
 
-$isPostSaved = null;
+$postId = null;
 if(!$errors){
-    $isPostSaved = savePost($post);
+    $postId = savePost($post);
+    if ($postId){
+        logger("blog $postId added",'/var/www/html/src/Tasks/HomeTask24/logs/logs.txt');
+    }
 }
 
-if (!$isPostSaved){
+if (!$postId){
     $errors['warnings']['post_saved'] = "'Post is not saved'";
     setMessages($errors, 'warnings');
 }

@@ -105,7 +105,6 @@ function saveUserSession($userId, $userLogInfo): bool
     try {
         $query->execute(
             ['user_id' => $userId, 'token' => $token, 'user_agent' => $userLogInfo['user_agent'], 'ip' => $userLogInfo['ip']]
-
         );
         return true;
     } catch (PDOException $e) {
@@ -160,7 +159,7 @@ function savePost($post): ?string
         $request->execute(
             ['title' => $title, 'text' => $text, 'author_id' => $author_id, 'image' => $image]
         );
-        return true;
+        return $connectionToDB->lastInsertId();
     } catch (PDOException $exception) {
         return false;
     }

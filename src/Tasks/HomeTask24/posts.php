@@ -10,7 +10,7 @@ if ($userId) {
     echo "Login not successful";
 }
 
-$page = (int) ($_GET['page'] ?? 1);
+$page = (int)($_GET['page'] ?? 1);
 $elementsPerPage = 3;
 $elementsCount = countPosts();
 $offset = ($page - 1) * $elementsPerPage;
@@ -18,6 +18,7 @@ $offset = ($page - 1) * $elementsPerPage;
 $posts = getPosts($elementsPerPage, $offset);
 
 $pagesCount = (int)ceil($elementsCount / $elementsPerPage);
+
 
 
 ?>
@@ -33,9 +34,12 @@ $pagesCount = (int)ceil($elementsCount / $elementsPerPage);
     <title>Document</title>
 </head>
 <body>
-<h1>Posts</h1>
 
-<div class="card-group">
+<?php require_once 'templates/_header.php' ?>
+
+<div class="container">
+    <h1 class="text-center">Posts</h1>
+
 
     <div class="card-group">
 
@@ -48,24 +52,23 @@ $pagesCount = (int)ceil($elementsCount / $elementsPerPage);
         } ?>
 
     </div>
+
+    <div class="d-flex justify-content-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <?php if ($page > 1): ?>
+                    <li class="page-item"><a class="page-link" href="?page=<?= $page - 1 ?>">Previous</a></li>
+                <?php endif; ?>
+
+                <?php for ($i = 1; $i <= $pagesCount; $i++): ?>
+                    <li class="page-item"><a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a></li>
+                <?php endfor; ?>
+
+                <?php if ($page !== $pagesCount): ?>
+                    <li class="page-item"><a class="page-link" href="?page=<?= $page + 1 ?>">Next</a></li>
+                <?php endif; ?>    </ul>
+        </nav>
+    </div>
 </div>
-
-</div>
-
-<nav aria-label="Page navigation example">
-    <ul class="pagination">
-        <?php if ($page > 1): ?>
-        <li class="page-item"><a class="page-link" href="?page=<?= $page - 1 ?>">Previous</a></li>
-        <?php endif; ?>
-
-        <?php for ($i = 1; $i <= $pagesCount; $i++): ?>
-            <li class="page-item"><a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a></li>
-        <?php endfor; ?>
-
-        <?php if ($page !== $pagesCount): ?>
-            <li class="page-item"><a class="page-link" href="?page=<?= $page + 1 ?>">Next</a></li>
-        <?php endif; ?>    </ul>
-</nav>
-
 </body>
 </html>
